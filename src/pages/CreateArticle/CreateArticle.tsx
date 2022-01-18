@@ -3,6 +3,8 @@ import Header from "../../component/Header/Header";
 import styles from "./CreateArticle.module.scss";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 const CreateArticle: React.FC = () => {
   const [markdown, setMarkdown] = useState("");
@@ -24,7 +26,15 @@ const CreateArticle: React.FC = () => {
         </div>
         <div className={styles.preview}>
           <div>プレビュー</div>
-          <div>入力内容表示</div>
+          {markdown && (
+            <div id="body">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(marked(markdown)),
+                }}
+              ></div>
+            </div>
+          )}
         </div>
         <div className={styles.sendBtn}>投稿する</div>
       </div>
