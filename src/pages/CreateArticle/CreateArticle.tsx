@@ -5,9 +5,19 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
+import axios from "axios";
 
 const CreateArticle: React.FC = () => {
   const [markdown, setMarkdown] = useState("");
+
+  const test = async () => {
+    const body = {
+      id: 2,
+      title: "json-serverA",
+      author: "yassy",
+    };
+    await axios.post("http://localhost:3001/posts", body);
+  };
 
   return (
     <div className={styles.root}>
@@ -36,7 +46,9 @@ const CreateArticle: React.FC = () => {
             </div>
           )}
         </div>
-        <div className={styles.sendBtn}>投稿する</div>
+        <div className={styles.sendBtn} onClick={test}>
+          投稿する
+        </div>
       </div>
     </div>
   );

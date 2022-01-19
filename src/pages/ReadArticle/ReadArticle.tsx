@@ -12,7 +12,6 @@ const CreateArticle: React.FC = () => {
       window.alert("取得失敗");
     }
   };
-  test();
 
   return (
     <div className={styles.root}>
