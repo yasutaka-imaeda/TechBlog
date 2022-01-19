@@ -9,12 +9,24 @@ import axios from "axios";
 
 const CreateArticle: React.FC = () => {
   const [markdown, setMarkdown] = useState("");
+  const [title, setTitle] = useState("");
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  // const hours = now.getHours();
+  const handleChange = (e: any) => {
+    setTitle(() => e.target.value);
+  };
 
   const test = async () => {
+    const bodyText = marked(markdown);
     const body = {
-      id: 2,
-      title: "json-serverA",
-      author: "yassy",
+      title: title,
+      bodyText: markdown,
+      bodyTextHtml: bodyText,
+      createAt: `${year}/${month}/${date}`,
+      like: 0,
     };
     await axios.post("http://localhost:3001/posts", body);
   };
@@ -28,7 +40,7 @@ const CreateArticle: React.FC = () => {
         <div>記事編集</div>
         <div className={styles.titleWrapper}>
           <div>タイトル</div>
-          <input />
+          <input onChange={handleChange} />
         </div>
         <div className={styles.inputWrapper}>
           <div>入力欄</div>

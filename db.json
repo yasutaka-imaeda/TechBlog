@@ -1,9 +1,12 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "第一記事",
+      "bodyText": "test",
+      "bodyTextHtml": "",
+      "createAt": "2022/1/19",
+      "like": 1,
+      "id": 1
     }
   ],
   "comments": [
