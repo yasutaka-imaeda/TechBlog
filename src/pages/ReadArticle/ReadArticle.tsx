@@ -1,25 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Header from "../../component/Header/Header";
 import styles from "./ReadArticle.module.scss";
 import axios from "axios";
+import { selectAfterTemp, selectPost } from "../../app/taskSlice";
 
 const CreateArticle: React.FC = () => {
-  const test = async () => {
-    try {
-      const response = await axios.get(`http://localhost:3001/posts/1`);
-      console.log(response);
-    } catch {
-      window.alert("取得失敗");
-    }
-  };
-
+  const data = useAppSelector(selectPost);
+  console.log(data);
   return (
     <div className={styles.root}>
       <div className={styles.container}>
         <div className={styles.header}>
           <Header />
         </div>
-        <div>記事一覧</div>
+        <div>{data[0].title}</div>
+        <div>第一記事</div>
       </div>
     </div>
   );

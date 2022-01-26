@@ -7,6 +7,14 @@
       "createAt": "2022/1/19",
       "like": 1,
       "id": 1
+    },
+    {
+      "title": "test2",
+      "bodyText": "これはテストです。**test**",
+      "bodyTextHtml": "<p>これはテストです。<strong>test</strong></p>\n",
+      "createAt": "2022/1/26",
+      "like": 0,
+      "id": 2
     }
   ],
   "comments": [

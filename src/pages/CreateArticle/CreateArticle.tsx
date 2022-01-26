@@ -14,7 +14,8 @@ const CreateArticle: React.FC = () => {
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
   const date = now.getDate();
-  // const hours = now.getHours();
+  // const hours = now.getHours()
+
   const handleChange = (e: any) => {
     setTitle(() => e.target.value);
   };
