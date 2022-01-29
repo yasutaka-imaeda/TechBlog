@@ -20,7 +20,7 @@ const CreateArticle: React.FC = () => {
     setTitle(() => e.target.value);
   };
 
-  const test = async () => {
+  const post = async () => {
     const bodyText = marked(markdown);
     const body = {
       title: title,
@@ -38,28 +38,30 @@ const CreateArticle: React.FC = () => {
         <div className={styles.header}>
           <Header />
         </div>
-        <div>記事編集</div>
+        <div className={styles.pageTitle}>記事編集</div>
         <div className={styles.titleWrapper}>
           <div>タイトル</div>
           <input onChange={handleChange} />
         </div>
-        <div className={styles.inputWrapper}>
-          <div>入力欄</div>
-          <SimpleMDE onChange={(e) => setMarkdown(e)} />
+        <div className={styles.inAndOut}>
+          <div className={styles.inputWrapper}>
+            <div>入力欄</div>
+            <SimpleMDE onChange={(e) => setMarkdown(e)} />
+          </div>
+          <div className={styles.preview}>
+            <div>プレビュー</div>
+            {markdown && (
+              <div className={styles.previewBody} id="body">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(marked(markdown)),
+                  }}
+                ></div>
+              </div>
+            )}
+          </div>
         </div>
-        <div className={styles.preview}>
-          <div>プレビュー</div>
-          {markdown && (
-            <div id="body">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(marked(markdown)),
-                }}
-              ></div>
-            </div>
-          )}
-        </div>
-        <div className={styles.sendBtn} onClick={test}>
+        <div className={styles.sendBtn} onClick={post}>
           投稿する
         </div>
       </div>
