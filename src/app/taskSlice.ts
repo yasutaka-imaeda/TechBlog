@@ -13,6 +13,14 @@ export interface TaskState {
       id: number;
     }
   ];
+  selectPost: {
+    title: string;
+    bodyText: string;
+    bodyTextHtml: string;
+    createAt: string;
+    like: number;
+    id: number;
+  };
   test: any;
   afterTemp: [
     { time: string; temp: number },
@@ -32,6 +40,14 @@ const initialState: TaskState = {
   post: [
     { title: "", bodyText: "", bodyTextHtml: "", createAt: "", like: 0, id: 0 },
   ],
+  selectPost: {
+    title: "",
+    bodyText: "",
+    bodyTextHtml: "",
+    createAt: "",
+    like: 0,
+    id: 0,
+  },
   test: [],
   afterTemp: [
     { time: "", temp: 0 },
@@ -55,6 +71,9 @@ export const taskSlice = createSlice({
     registerPost: (state, action) => {
       state.post = action.payload;
     },
+    registerSelectPost: (state, action) => {
+      state.selectPost = action.payload;
+    },
     registerTest: (state, action) => {
       state.test = action.payload;
     },
@@ -64,11 +83,17 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { registerPost, registerAfterTemp, registerTest } =
-  taskSlice.actions;
+export const {
+  registerPost,
+  registerSelectPost,
+  registerAfterTemp,
+  registerTest,
+} = taskSlice.actions;
 
 export const selectPost = (state: RootState): TaskState["post"] =>
   state.task.post;
+export const selectSelectPost = (state: RootState): TaskState["selectPost"] =>
+  state.task.selectPost;
 export const selectTest = (state: RootState): TaskState["test"] =>
   state.task.test;
 export const selectAfterTemp = (state: RootState): TaskState["afterTemp"] =>

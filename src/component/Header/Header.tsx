@@ -5,19 +5,13 @@ import axios from "axios";
 import { Path } from "../../Routes ";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import {
-  registerPost,
-  registerTest,
-  selectPost,
-  selectTest,
-} from "../../app/taskSlice";
+import { registerPost } from "../../app/taskSlice";
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const getList = async () => {
     try {
       const response = await axios.get(`http://localhost:3001/posts/`);
-      console.log(response.data);
       const data: any = response.data;
       dispatch(registerPost(data));
     } catch {
@@ -34,7 +28,7 @@ const Header: React.FC = () => {
         記事編集ページ遷移
       </Button>
       <Button component={Link} to={Path.readArticle} onClick={getList}>
-        記事見るページ遷移
+        記事一覧ページ遷移
       </Button>
     </div>
   );
