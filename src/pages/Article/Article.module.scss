@@ -5,6 +5,31 @@
       border-bottom: 2px solid blue;
       width: 50vh;
     }
+    .likeWrapper {
+      display: flex;
+      align-items: center;
+      height: 16px;
+      margin-bottom: 30px;
+      .likebtn {
+        text-align: center;
+        margin-right: 20px;
+        background-color: #ebebeb;
+        border-radius: 10px;
+        align-items: center;
+        height: 20px;
+        width: 80px;
+        border: 1px solid blue;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      .likeCount {
+        margin-left: 20px;
+        text-align: center;
+        align-items: bottom;
+      }
+    }
     .btnWrapper {
       display: flex;
       .btn {

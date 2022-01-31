@@ -26,20 +26,22 @@ const DirectArticle: React.FC = () => {
     setMarkdown(data.bodyText);
   }, []);
 
+  const likedata = useAppSelector(selectSelectPost);
   const put = async () => {
     if (title === "") {
       window.alert("タイトルを入力し直してください");
+      return;
+    } else {
+      const bodyText = marked(markdown);
+      const body = {
+        title: title,
+        bodyText: markdown,
+        bodyTextHtml: bodyText,
+        createAt: `${year}/${month}/${date}`,
+        like: likedata.like,
+      };
+      await axios.put(`http://localhost:3001/posts/${data.id}`, body);
     }
-    return;
-    const bodyText = marked(markdown);
-    const body = {
-      title: title,
-      bodyText: markdown,
-      bodyTextHtml: bodyText,
-      createAt: `${year}/${month}/${date}`,
-      like: 0,
-    };
-    await axios.put(`http://localhost:3001/posts/${data.id}`, body);
   };
 
   return (
