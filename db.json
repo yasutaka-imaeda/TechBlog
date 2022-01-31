@@ -3,9 +3,9 @@
     {
       "title": "第一記事",
       "bodyText": "test",
-      "bodyTextHtml": "",
-      "createAt": "2022/1/19",
-      "like": 1,
+      "bodyTextHtml": "<p>test</p>\n",
+      "createAt": "2022/1/31",
+      "like": 0,
       "id": 1
     },
     {

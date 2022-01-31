@@ -27,6 +27,10 @@ const DirectArticle: React.FC = () => {
   }, []);
 
   const put = async () => {
+    if (title === "") {
+      window.alert("タイトルを入力し直してください");
+    }
+    return;
     const bodyText = marked(markdown);
     const body = {
       title: title,
