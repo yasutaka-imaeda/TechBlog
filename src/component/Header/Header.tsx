@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         ホームへページ遷移
       </Button>
       <Button component={Link} to={Path.createArticle} onClick={getList}>
-        記事編集ページ遷移
+        記事作成ページ遷移
       </Button>
       <Button component={Link} to={Path.readArticle} onClick={getList}>
         記事一覧ページ遷移
